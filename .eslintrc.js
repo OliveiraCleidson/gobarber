@@ -2,35 +2,49 @@ module.exports = {
   env: {
     es2020: true,
     node: true,
+    jest: true
   },
   extends: [
     'airbnb-base',
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint',
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    "import/extensions": [
+    'no-use-before-define' : 'off',
+    'no-useless-constructor' : 'off',
+    "@typescript-eslint/naming-convention": [
       "error",
-      "ignorePackages",
       {
-        "ts": "never"
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
       }
     ],
-    "prettier/prettier": "error"
+    'no-shadow' : 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never',
+      },
+    ],
+    'prettier/prettier': 'error',
+    'class-methods-use-this': 'off',
+    'no-unused-expressions': 'off'
   },
   settings: {
-    "import/resolver": {
-      "typescript": {}
-    }
-  }
+    'import/resolver': {
+      typescript: {},
+    },
+  },
 };
